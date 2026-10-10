@@ -16,7 +16,7 @@ node server.js
 
 Abre `http://localhost:3000`. El servidor tambien acepta el puerto indicado en la variable de entorno `PORT`.
 
-Las fotos se guardan localmente en la carpeta del proyecto. La integracion con Google Drive es opcional; sin configurarla, el album sigue funcionando con almacenamiento local.
+Las fotos nuevas se envian directamente a Google Drive y no se guardan en el disco del servidor. Google Drive debe estar configurado para consultar el album o subir fotos. Las fotos que ya existian localmente no se migran ni se borran; dejan de aparecer en el album y puedes copiarlas a Drive manualmente si quieres conservarlas alli.
 
 ## Google Drive (opcional)
 
@@ -30,7 +30,9 @@ $env:GOOGLE_REFRESH_TOKEN = "REFRESH_TOKEN"
 node server.js
 ```
 
-No guardes esos valores en el repositorio ni en archivos que vayas a publicar. Para un servidor alojado, configura las variables en el panel seguro del proveedor de hosting. El disco del servidor debe ser persistente si quieres conservar las fotos locales entre reinicios o despliegues.
+No guardes esos valores en el repositorio ni en archivos que vayas a publicar. Para un servidor alojado, configura las variables en el panel seguro del proveedor de hosting.
+
+El album consulta la carpeta de Drive cada vez que carga y se actualiza automaticamente cada 20 segundos. Si eliminas una foto de esa carpeta, dejara de aparecer al actualizarse el album.
 
 ### Usar secretos de GitHub
 
