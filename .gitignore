@@ -1,0 +1,22 @@
+# Secrets and local configuration
+.env
+.env.*
+!.env.example
+service-account.json
+service-account*.json
+*.pem
+*.key
+
+# Uploaded event photos are stored in the project root
+/*.jpg
+/*.jpeg
+/*.png
+/*.webp
+/*.gif
+/uploads/
+
+# Local tooling and generated files
+node_modules/
+*.log
+.DS_Store
+Thumbs.db

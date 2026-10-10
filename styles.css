@@ -1,0 +1,553 @@
+:root {
+  --bg: #eaf0f3;
+  --ink: #23364a;
+  --accent: #5f8fa8;
+  --gold: #b8965a;
+  --card: #fff;
+  --paper: #f6f4ee;
+
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: 'Nunito Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+
+.page {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding:
+    max(24px, env(safe-area-inset-top))
+    16px
+    180px;
+}
+
+:focus-visible {
+  outline: 3px solid var(--gold);
+  outline-offset: 3px;
+}
+
+/* ===================================== */
+/* BARRA INFERIOR */
+/* ===================================== */
+
+.tabs {
+  position: fixed;
+  z-index: 30;
+  left: 50%;
+  transform: translateX(-50%);
+
+  bottom: calc(14px + env(safe-area-inset-bottom));
+
+  display: flex;
+  gap: 4px;
+
+  padding: 6px;
+
+  border-radius: 999px;
+
+  background: rgba(255,255,255,.9);
+
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+
+  box-shadow:
+    0 8px 24px rgba(35,54,74,.20);
+}
+
+.tabs a {
+  padding: 12px 28px;
+  border-radius: 999px;
+  color: var(--ink);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.tabs a[aria-current='page'] {
+  background: var(--ink);
+  color: #fff;
+}
+
+/* ===================================== */
+/* PANTALLA SUBIR */
+/* ===================================== */
+
+.hero {
+  text-align: center;
+  padding-top: max(40px, env(safe-area-inset-top));
+}
+
+.symbol {
+  font-size: 44px;
+  line-height: 1;
+}
+
+.intro {
+  margin: 12px 0 0;
+  font: italic 400 1.2rem 'Fraunces', Georgia, serif;
+  color: var(--gold);
+}
+
+h1 {
+  margin: 4px 0 6px;
+  font:
+    600
+    clamp(2.4rem, 10vw, 4rem)
+    /1.05
+    'Fraunces',
+    Georgia,
+    serif;
+}
+
+.date {
+  margin: 0 0 18px;
+  font-weight: 600;
+}
+
+.msg {
+  max-width: 34ch;
+  margin: 0 auto 28px;
+  line-height: 1.55;
+}
+
+.btn {
+  min-height: 56px;
+  padding: 0 36px;
+
+  border: 0;
+  border-radius: 999px;
+
+  background: var(--accent);
+  color: #fff;
+
+  font: 600 1.1rem 'Nunito Sans', sans-serif;
+
+  box-shadow:
+    0 8px 20px rgba(35,54,74,.25);
+
+  cursor: pointer;
+}
+
+.btn:disabled {
+  opacity: .6;
+  cursor: default;
+}
+
+progress {
+  display: block;
+  width: min(320px, 100%);
+  height: 8px;
+  margin: 20px auto 0;
+  accent-color: var(--gold);
+}
+
+.status {
+  min-height: 1.5em;
+  margin-top: 14px;
+  font-weight: 600;
+}
+
+.recent {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  gap: 8px;
+
+  margin-top: 12px;
+}
+
+.recent img {
+  width: 72px;
+  height: 72px;
+
+  object-fit: cover;
+
+  border: 4px solid white;
+  border-radius: 4px;
+
+  box-shadow:
+    0 2px 6px rgba(35,54,74,.20);
+}
+
+/* ===================================== */
+/* ALBUM */
+/* ===================================== */
+
+.binding {
+  padding: 10px;
+  border-radius: 14px;
+
+  background: var(--ink);
+  box-shadow:
+    0 24px 50px rgba(35,54,74,.35);
+}
+
+.book {
+  display: flex;
+  overflow-x: auto;
+
+  scroll-snap-type: x mandatory;
+
+  scrollbar-width: none;
+
+  border-radius: 6px;
+}
+
+.book::-webkit-scrollbar {
+  display: none;
+}
+
+.sheet {
+  position: relative;
+  flex: 0 0 100%;
+  min-height: 540px;
+  padding: 10px;
+  scroll-snap-align: start;
+}
+
+.paper {
+  background: var(--paper);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  height: 100%;
+  /* align-content: start; */
+}
+
+.num {
+  position: absolute;
+  bottom: 14px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font:
+    italic 400 .95rem 'Fraunces',
+    Georgia,
+    serif;
+  color: var(--gold);
+}
+
+/* ===================================== */
+/* FOTOS */
+/* ===================================== */
+
+.print {
+  position: relative;
+  margin: 0;
+  padding: 4px;
+  background: white;
+  transform: rotate(var(--r, 0deg));
+  cursor: pointer;
+  box-shadow:
+    0 1px 4px rgba(0,0,0,.30);
+}
+
+.print img {
+  /* display: block; */
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  /* background: #dde5ea; */
+}
+
+.print::before,
+.print::after {
+  content: '';
+
+  position: absolute;
+
+  width: 22px;
+  height: 22px;
+
+  background: var(--ink);
+
+  opacity: .88;
+}
+
+.print::before {
+  top: -3px;
+  left: -3px;
+
+  clip-path: polygon(0 0, 100% 0, 0 100%);
+}
+
+.print::after {
+  bottom: -3px;
+  right: -3px;
+
+  clip-path: polygon(100% 0, 100% 100%, 0 100%);
+}
+
+/* ===================================== */
+/* PORTADA */
+/* ===================================== */
+
+.cover {
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: var(--gold);
+  overflow: hidden;
+  text-shadow:
+    0 2px 4px rgba(0,0,0,.35);
+}
+
+.cover::before {
+  content: "";
+
+  position: absolute;
+  inset: 22px;
+
+  border: 3px solid rgb(184, 150, 90);
+
+  pointer-events: none;
+}
+
+.cover h1 {
+  margin: 4px 0;
+  line-height: 1.1;
+}
+
+.cover .sub {
+  margin-top: 8px;
+
+  font:
+    italic 400 1.4rem
+    'Fraunces',
+    Georgia,
+    serif;
+}
+
+.cover .date {
+  margin-top: 8px;
+}
+
+.photo-count {
+  position: absolute;
+
+  left: 0;
+  right: 0;
+
+  bottom: 26px;
+
+  text-align: center;
+
+  color: white;
+
+  font-size: .95rem;
+  font-weight: 700;
+
+  letter-spacing: .5px;
+}
+
+.empty {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 120px;
+  text-align: center;
+  color: var(--gold);
+  font-size: 1.2rem;
+  font-weight: 900;
+  line-height: 1.5;
+  padding: 0 20px;
+}
+
+.link {
+  display: block;
+  text-align: center;
+
+  color: var(--accent);
+
+  font-weight: 600;
+}
+
+/* ===================================== */
+/* PAGINADOR */
+/* ===================================== */
+
+.pager {
+  position: fixed;
+
+  z-index: 25;
+
+  left: 50%;
+  transform: translateX(-50%);
+
+  bottom: 95px;
+
+  display: flex;
+  align-items: center;
+  gap: 14px;
+
+  padding: 8px 14px;
+
+  border-radius: 999px;
+
+  background: rgba(255,255,255,.95);
+
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
+  box-shadow:
+    0 4px 16px rgba(0,0,0,.15);
+}
+
+.pager button {
+  width: 22px;
+  height: 22px;
+
+  border: 0;
+  border-radius: 50%;
+
+  background: var(--card);
+  color: var(--ink);
+
+  font-size: 17px;
+  font-weight: 700;
+
+  cursor: pointer;
+}
+
+#pos {
+  min-width: 70px;
+  text-align: center;
+  font-weight: 700;
+}
+
+/* ===================================== */
+/* ESCRITORIO */
+/* ===================================== */
+
+@media (min-width: 900px) {
+
+  .sheet {
+    flex-basis: 50%;
+    min-height: 620px;
+    padding: 32px 30px 50px;
+    scroll-snap-align: none;
+  }
+
+  .sheet:nth-child(odd) {
+    scroll-snap-align: start;
+
+    box-shadow:
+      inset -26px 0 26px -20px rgba(0,0,0,.30);
+  }
+
+  .sheet:nth-child(even) {
+    box-shadow:
+      inset 26px 0 26px -20px rgba(0,0,0,.30);
+  }
+}
+
+/* ===================================== */
+/* MOVIL */
+/* ===================================== */
+
+@media (max-width: 768px) {
+  .sheet {
+    min-height: calc(100vh - 220px);
+    justify-content: center;
+    align-items: center;
+  }
+  .print img {
+  width: 100%;
+  aspect-ratio: 0;
+  object-fit: cover;
+}
+  .symbol {
+    font-size: 58px;
+  }
+  .cover h1 {
+    font-size: 2.8rem;
+  }
+  .cover .sub {
+    font-size: 1.3rem;
+  }
+  .pager {
+    bottom: 92px;
+  }
+
+  .tabs a {
+    padding: 12px 22px;
+  }
+}
+
+/* ===================================== */
+/* VISOR */
+/* ===================================== */
+
+.viewer {
+  position: fixed;
+  inset: 0;
+
+  z-index: 100;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: rgba(15,25,35,.94);
+}
+
+.viewer img {
+  max-width: 100%;
+  max-height: 90%;
+
+  object-fit: contain;
+}
+
+.viewer button {
+  position: absolute;
+
+  border: 0;
+
+  color: white;
+  background: none;
+
+  cursor: pointer;
+}
+
+.viewer .prev {
+  left: 8px;
+  font-size: 44px;
+}
+
+.viewer .next {
+  right: 8px;
+  font-size: 44px;
+}
+
+.viewer .close {
+  top: 10px;
+  right: 8px;
+  font-size: 28px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .book {
+    scroll-behavior: auto;
+  }
+}

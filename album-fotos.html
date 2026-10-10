@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400&family=Nunito+Sans:wght@400;600&display=swap" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="page hero">
+    <div class="symbol" data-c="symbol"></div>
+    <p class="intro" data-c="intro"></p>
+    <h1 data-c="name"></h1>
+    <p class="date" data-c="date"></p>
+    <p class="msg" data-c="message"></p>
+
+    <button class="btn" id="uploadBtn" type="button"></button>
+    <input id="file" type="file" accept="image/*" multiple hidden />
+    <progress id="progress" max="1" value="0" hidden></progress>
+    <p class="status" id="status" role="status"></p>
+    <div class="recent" id="recent"></div>
+  </main>
+
+  <nav class="tabs" aria-label="Secciones">
+    <a href="album-fotos.html" aria-current="page">Subir</a>
+    <a href="album.html">Álbum</a>
+  </nav>
+
+  <script src="enviroment.js"></script>
+  <script src="common.js"></script>
+  <script src="upload.js"></script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Álbum</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400&family=Nunito+Sans:wght@400;600&display=swap" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="page">
+
+    <div class="binding"><div class="book" id="book" aria-live="polite"></div></div>
+    <small id="count"></small>
+    <div class="pager">
+      <button id="prev" type="button" aria-label="Página anterior">‹</button>
+      <span id="pos"></span>
+      <button id="next" type="button" aria-label="Página siguiente">›</button>
+    </div>
+  </main>
+
+  <div class="viewer" id="viewer" hidden>
+    <img id="viewerImg" alt="Foto ampliada" />
+    <button class="nav prev" id="vPrev" aria-label="Anterior">‹</button>
+    <button class="nav next" id="vNext" aria-label="Siguiente">›</button>
+    <button class="close" id="vClose" aria-label="Cerrar">✕</button>
+  </div>
+
+  <nav class="tabs" aria-label="Secciones">
+    <a href="album-fotos.html">Subir</a>
+    <a href="album.html" aria-current="page">Álbum</a>
+  </nav>
+
+  <script src="enviroment.js"></script>
+  <script src="common.js"></script>
+  <script src="album.js"></script>
+</body>
+</html>
